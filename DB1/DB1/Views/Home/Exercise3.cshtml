@@ -1,0 +1,103 @@
+﻿@using DB1.Models
+@{
+    ViewBag.Title = "Exercício 3";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            angular.element("[ng-controller='_LayoutController']").scope().$apply(function (scope) {
+                scope.technologies = @Html.Raw(ViewBag.Technologies != null ? Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Technologies) : "null");
+                scope.vacancies = @Html.Raw(ViewBag.Vacancies != null ? Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Vacancies) : "null");
+                scope.candidates = @Html.Raw(ViewBag.Candidates != null ? Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Candidates) : "null");
+                scope.model_candidate = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(new Candidate()));
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="alert alert-success">
+            <b>
+                “O RH necessita de uma aplicação para traçar as tecnologias que os candidatos conhecem.
+                Como cadastros base, será informado ao sistema quais tecnologias a empresa trabalha, e quais vagas estão disponíveis.
+                Durante a entrevista, candidato será cadastrado a uma vaga e vinculado às tecnologias que conhece.
+                Ao final do período de triagem de currículos, o RH informará o peso de cada tecnologia para a vaga em questão,
+                recebendo com isso, um relatório ordenado por candidato, pontuado de acordo com o conhecimento do mesmo.”
+            </b>
+            <br />
+            <br />
+            <strong>7.	</strong>Se baseando no requisito acima, desenvolva os cadastros básicos da aplicação contemplando as seguintes operações: listagem, criação, alteração e exclusão.<br />
+            <strong>8.	</strong>Utilizando a estrutura elaborada anteriormente, desenvolva a funcionalidade de entrevista descrita na regra de negócio.<br />
+            <strong>9.	</strong>Utilizando a estrutura elaborada anteriormente, desenvolva as funcionalidades contempladas ao final do período de triagem de currículos.<br />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Processo Seletivo {{company}}</h3>
+        <hr />
+        <form id="form-register" name="formCandidate" ng-submit="savechanges()">            
+            <input type="hidden" ng-model="model_candidate.id" ng-value="model_candidate.id" />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b>Vagas disponíveis</b><br />
+                    Selecione a vaga do candidato:
+                </div>
+                <div class="panel-body">
+                    <div ng-repeat="vac in vacancies | orderBy: 'id'" class="radio">
+                        <label><input ng-model="model_candidate.vacancy" ng-value="vac" ng-checked="model_candidate.vacancy.id == vac.id" type="radio" name="vacancy">{{vac.name}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tecnologias
+                </div>
+                <div class="panel-body">
+                    <div ng-repeat="tech in technologies | orderBy: 'name'" class="checkbox">
+                        <label><input name="technologies" type="checkbox" data-id="{{tech.id}}" data-name="{{tech.name}}">{{tech.name}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Informações
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input id="txt-name" type="text" class="form-control" name="name" ng-model="model_candidate.name" ng-value="model_candidate.name" placeholder="Ex: Pedro Paulo ..." />
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <button class="btn btn-success">Salvar</button>
+        </form>
+        <hr />
+        <h3>Listagem de Candidatos</h3>
+        <hr />
+        <table ng-if="candidates" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Vaga</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="can in candidates | orderBy: 'id'">
+                    <td>{{can.id}}</td>
+                    <td>{{can.name}}</td>
+                    <td>{{can.vacancy.name}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="delete(can.id)"><i class="fa fa-times"></i></button>
+                        <button class="btn btn-primary" ng-click="edit(can)"><i class="fa fa-edit"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\bin\Debug\DB1.ConsoleTests.dll
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\bin\Debug\DB1.ConsoleTests.pdb
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\bin\Debug\DB1.Console.exe
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\bin\Debug\DB1.Console.pdb
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\obj\Debug\DB1.ConsoleTests.csprojResolveAssemblyReference.cache
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\obj\Debug\DB1.ConsoleTests.dll
+C:\Users\Pedro Viscardi\Documents\Institucionais\Code\DB1\DB1.ConsoleTests\obj\Debug\DB1.ConsoleTests.pdb

@@ -1,0 +1,32 @@
+[
+  {
+    "outputFileName": "Content/Site.min.css",
+    "inputFiles": [
+      "Content/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/bootstrap.min.css",
+    "inputFiles": [
+      "Content/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/controllers/exercise4.min.js",
+    "inputFiles": [
+      "Scripts/controllers/exercise4.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/controllers/layout-controller.min.js",
+    "inputFiles": [
+      "Scripts/controllers/layout-controller.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/loading.min.css",
+    "inputFiles": [
+      "Content/loading.css"
+    ]
+  }
+]

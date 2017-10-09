@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="_LayoutController" ng-cloak>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DB1</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link type="text/css" href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/Site.min.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/loading.min.css" rel="stylesheet" />
+    @RenderSection("stylesheets", required: false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/home"><i class="fa fa-cube"></i> {{company}}</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/exercicio2">Exercício 2</a></li>
+                    <li><a href="/exercicio3">Exercício 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <br />
+        @RenderBody()
+        <br />
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - {{company}}</p>
+        </footer>
+    </div>
+    <!--Loading-->
+    <div class="loading" style="display:none">Carregando&#8230;</div>
+    <!--Scripts-->
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/respond.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-1.6.0/angular.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-1.6.0/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/controllers/layout-controller.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

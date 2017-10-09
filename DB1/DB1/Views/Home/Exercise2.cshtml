@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Exercício 2";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            angular.element("[ng-controller='_LayoutController']").scope().$apply(function (scope) {
+                scope.get_users();
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="alert alert-success">
+            <strong> 4.	</strong>Utilizando a API informada acima, desenvolva uma tela que exibirá uma lista de usuários do GitHub, contendo seu Id e Login.<br />
+            <strong> 5.	</strong>A partir da listagem feita no exercício anterior, elabore uma tela que mostre os detalhes de um usuário específico, contendo seu Id, Login, URL do perfil e Data de cadastro.<br />
+            <strong> 6.	</strong>Juntamente com a tela de detalhamentos de usuário, exiba em uma tabela os repositórios públicos do usuário, contendo Id, Nome e URL do repositório.<br />
+        </div>
+    </div>
+</div>
+<div ng-if="users" class="row">
+    <div ng-repeat="user in users | orderBy: 'id'" class="col-xs-12 col-md-3">
+        <br />
+        <header class="w3-container w3-light-grey">
+            <h3>{{user.id + '. ' + user.login}}</h3>
+        </header>
+        <div class="w3-container">
+            <img ng-src="{{user.avatar_url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+            <p ng-if="user.site_admin">Admin</p>
+        </div>
+        <button ng-click="view(user.login)" class="w3-button w3-block w3-dark-grey"><i class="fa fa-search"></i> Detalhes</button>
+        <br />
+    </div>
+</div>
+<div id="modal-user" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Dados do Usuário</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <h2>{{model_user.id + '. ' + model_user.name}}</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Perfil <a target="_blank" href="{{model_user.url}}">{{model_user.url}}</a></div>
+                        <div class="panel-body">
+                            Data de Cadastro: {{model_user.created_at | date:'dd/MM/yyyy'}}<br />
+                            Login: {{model_user.login}}<br />
+                            Seguidores: {{model_user.followers}}<br />
+                            Seguindo: {{model_user.following}}
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div ng-if="repository" class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#repository"><i class="fa fa-plus"></i> Ver repositório</a>
+                                </h4>
+                            </div>
+                            <div id="repository" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p ng-repeat="rep in repository | filter:{private:false}">
+                                        {{rep.id + ', ' + rep.name + ': '}}<br />
+                                        <a target="_blank" href="{{rep.url}}">{{rep.url}}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
