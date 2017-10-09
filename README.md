@@ -9,13 +9,13 @@ Implementado no Projeto DB1.Console, na classe Program.cs com testes no Projeto 
 * Classe Exercise3.cs
 
 ```CS
-		private static void Main(string[] args)
-        {
-            ExecExercise1(13, 0, 0);
-            ExecExercise1(13, 1, 1000000);
-            ExecExercise2();
-            ExecExercise3();
-        }
+private static void Main(string[] args)
+{
+    ExecExercise1(13, 0, 0);
+    ExecExercise1(13, 1, 1000000);
+    ExecExercise2();
+    ExecExercise3();
+}
 ```
 
 ### Exercício 2 ###
